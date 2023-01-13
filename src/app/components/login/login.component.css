@@ -1,0 +1,85 @@
+h1 {
+    margin-top: 0px;
+}
+
+#login, #register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5em;
+    background-color: white;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    min-width: 250px;
+}
+
+#login {
+    border-color: #c1e1d3;
+}
+
+#register {
+    border-color: #ebd7fa;
+}
+
+#loginBtn, #registerBtn {
+    width: 7em;
+    padding: 0.5em;
+    margin-top: 2em;
+}
+
+#loginBtn {
+    border: 1px solid #acc8bc;
+    background-color: #c1e1d3;
+    font-weight: bold;
+    color: #2b322f;
+}
+
+#loginBtn:hover{
+    background-color: #acc8bc;
+    cursor: pointer;
+}
+
+#registerBtn {
+    border: 1px solid #d3c1e1;
+    background-color: #ebd7fa;
+    font-weight: bold;
+    color: #2f2b32;
+}
+
+#registerBtn:hover {
+    background-color: #d3c1e1;
+    cursor: pointer;
+}
+
+.createAccount {
+    font-size: 9px;
+    margin-top: 2em;
+    align-self: flex-end;
+}
+
+.createAccount:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form > .inputContainer:nth-child(2) {
+    margin-top: 1em;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputContainer > label {
+    font-size: 11px;
+}
+
+
