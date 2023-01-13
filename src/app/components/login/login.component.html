@@ -1,35 +1,46 @@
 <ng-container *ngIf="!notRegistered">
     <div id="login">
         <h1>Login</h1>
-        <div class="form">
+
+        <form class="form" [formGroup]="loginForm">
             <div class="inputContainer">
                 <label for="username">Usuario</label>
-                <input id="username" type="text">
+                <input id="username" type="text" formControlName="username">
             </div>
             <div class="inputContainer">
                 <label for="password">Contraseña</label>
-                <input id="password" type="password">
+                <input id="password" type="password" formControlName="password">
             </div>
-            <button id="loginBtn">Ingresar</button>
-            <a class="createAccount" (click)="createAccount()">Crear una cuenta</a>
-        </div> 
+            <div class="notificationsContainer">
+                <span *ngIf="failedLogin" id="failedLogin">Las credenciales son incorrectas</span>
+            </div>
+            <button id="loginBtn" [disabled]="!loginForm.valid" (click)="login()">Ingresar</button>
+        </form> 
+        
+        <a class="createAccount" (click)="createAccount()">Crear una cuenta</a>
     </div>
 </ng-container>
 
 <ng-container *ngIf="notRegistered">
     <div id="register">
         <h1>Registrarse</h1>
-        <div class="form">
+
+        <form class="form" [formGroup]="loginForm">
             <div class="inputContainer">
                 <label for="username">Usuario</label>
-                <input id="username" type="text">
+                <input id="username" type="text" formControlName="username">
             </div>
             <div class="inputContainer">
                 <label for="password">Contraseña</label>
-                <input id="password" type="password">
+                <input id="password" type="password" formControlName="password">
             </div>
-            <button id="registerBtn">Enviar</button>
-            <a class="createAccount" (click)="createAccount()">Volver</a>
-        </div>
+            <div class="notificationsContainer">
+                <span *ngIf="usernameAlreadyExists" id="alreadyExists">El usuario ya existe</span>
+                <span *ngIf="registrationOk" id="registrationOk">Usuario creado correctamente</span>
+            </div>
+            <button id="registerBtn" [disabled]="!loginForm.valid" (click)="registerAccount()">Enviar</button>
+        </form>
+
+        <a class="createAccount" (click)="createAccount()">Volver</a>
     </div>
 </ng-container>
