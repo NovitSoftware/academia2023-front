@@ -8,13 +8,15 @@ import { LoginComponent } from './components/login/login.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MensajeComponent } from './components/mensaje/mensaje.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     InicioComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MensajeComponent
   ],
   imports: [
     BrowserModule,
