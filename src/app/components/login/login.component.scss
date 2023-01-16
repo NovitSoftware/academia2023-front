@@ -28,12 +28,13 @@ h1 {
     width: 7em;
     padding: 0.5em;
     margin-top: 2em;
+    font-weight: 500;
+    font-family: 'Roboto';
 }
 
 #loginBtn {
     border: 1px solid $color-middle-green;
     background-color: $color-low-green;
-    font-weight: bold;
     color: $color-black-green;
 }
 
@@ -45,7 +46,6 @@ h1 {
 #registerBtn {
     border: 1px solid $color-middle-purple;
     background-color: $color-low-purple;
-    font-weight: bold;
     color: $color-black-purple;
 }
 
@@ -76,20 +76,21 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
 
-.form > .inputContainer:nth-child(2) {
-    margin-top: 1em;
+    > .inputContainer:nth-child(2) {
+        margin-top: 1em;
+    }
 }
 
 .inputContainer {
     display: flex;
     flex-direction: column;
+    
+    > label {
+        font-size: 11px;
+    }
 }
 
-.inputContainer > label {
-    font-size: 11px;
-}
 
 .notificationsContainer {
     margin-top: 1em;
@@ -99,6 +100,12 @@ h1 {
     width: 100%;
 }
 
+#failedLogin, #alreadyExists, #registrationOk {
+    font-weight: bold;
+    font-size: 11px;
+    position: absolute ;
+}
+
 #registrationOk {
     color: $color-success;
 }
@@ -106,10 +113,3 @@ h1 {
 #failedLogin, #alreadyExists {
     color: $color-error;
 }
-
-#failedLogin, #alreadyExists, #registrationOk {
-    font-weight: bold;
-    font-size: 11px;
-    position: absolute ;
-}
-

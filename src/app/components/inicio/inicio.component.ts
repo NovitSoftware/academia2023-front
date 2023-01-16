@@ -14,4 +14,8 @@ export class InicioComponent implements OnInit {
     if (!localStorage.getItem('login')) this.router.navigateByUrl("/login");
   }
 
+  logout(){
+    localStorage.removeItem('login');
+    this.router.navigateByUrl("/login");
+  }
 }
