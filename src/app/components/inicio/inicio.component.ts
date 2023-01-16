@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-inicio',
@@ -8,14 +9,13 @@ import { Router } from '@angular/router';
 })
 export class InicioComponent implements OnInit {
 
-  constructor(private router: Router){}
+  constructor(private _loginService: LoginService){}
 
   ngOnInit(){
-    if (!localStorage.getItem('login')) this.router.navigateByUrl("/login");
+    this._loginService.checkIfLogged();
   }
 
   logout(){
-    localStorage.removeItem('login');
-    this.router.navigateByUrl("/login");
+    this._loginService.logout();
   }
 }

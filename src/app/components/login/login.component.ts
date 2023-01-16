@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,19 +16,19 @@ export class LoginComponent implements OnInit {
   registrationOk: boolean = false;
   usernameAlreadyExists: boolean = false;
 
-  // Guardar datos - ATENCIÓN: no persisten
-  registeredUsers: {username: string, password: string}[] = [];
-
   // Formulario
   loginForm = new FormGroup({
     username: new FormControl<string>('', {nonNullable: true, validators: Validators.required}),
     password: new FormControl<string>('',  {nonNullable: true, validators: Validators.required}),
   });
 
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private _loginService: LoginService
+  ){}
 
   ngOnInit(){
-    if (localStorage.getItem('login')) this.router.navigateByUrl("/inicio");
+    this._loginService.checkIfLogged();
   }
 
   createAccount(){
@@ -44,14 +45,12 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.get('password')!.value
     };
 
-    const userExists = _.findIndex(this.registeredUsers, x => x.username === newAccount.username);
-    if (userExists >= 0) {
-      this.usernameAlreadyExists = true;
-      return
-    };
-
-    this.registeredUsers.push(newAccount);
-    this.registrationOk = true;
+    const userExists = this._loginService.userExists(newAccount);
+    if (userExists) this.usernameAlreadyExists = true;
+    else {
+      this._loginService.addUser(newAccount)
+      this.registrationOk = true;
+    }
   }
 
   login(){
@@ -62,14 +61,8 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.get('password')!.value
     };
 
-    const loginOk = _.findIndex(this.registeredUsers, x => x.username === credentials.username && x.password === credentials.password);
-    if (loginOk >= 0) {
-      localStorage.setItem('login', 'ok');
-      this.router.navigateByUrl("/inicio")
-      return
-    };
-
-    this.failedLogin = true;
+    const loginOk = this._loginService.login(credentials);
+    loginOk ? this.router.navigateByUrl("/inicio") : this.failedLogin = true;
   }
 
 }
