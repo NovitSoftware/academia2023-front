@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-mensaje',
   templateUrl: './mensaje.component.html',
-  styleUrls: ['./mensaje.component.css']
+  styleUrls: ['./mensaje.component.scss']
 })
 export class MensajeComponent {
 

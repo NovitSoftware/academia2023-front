@@ -1,3 +1,5 @@
+@import "colors.scss";
+
 h1 {
     margin-top: 0px;
 }
@@ -15,11 +17,11 @@ h1 {
 }
 
 #login {
-    border-color: #c1e1d3;
+    border-color: $color-low-green;
 }
 
 #register {
-    border-color: #ebd7fa;
+    border-color: $color-low-purple;
 }
 
 #loginBtn, #registerBtn {
@@ -29,33 +31,33 @@ h1 {
 }
 
 #loginBtn {
-    border: 1px solid #acc8bc;
-    background-color: #c1e1d3;
+    border: 1px solid $color-middle-green;
+    background-color: $color-low-green;
     font-weight: bold;
-    color: #2b322f;
+    color: $color-black-green;
 }
 
 #loginBtn:hover{
-    background-color: #acc8bc;
+    background-color: $color-middle-green;
     cursor: pointer;
 }
 
 #registerBtn {
-    border: 1px solid #d3c1e1;
-    background-color: #ebd7fa;
+    border: 1px solid $color-middle-purple;
+    background-color: $color-low-purple;
     font-weight: bold;
-    color: #2f2b32;
+    color: $color-black-purple;
 }
 
 #registerBtn:hover {
-    background-color: #d3c1e1;
+    background-color: $color-middle-purple;
     cursor: pointer;
 }
 
 #loginBtn[disabled], #registerBtn[disabled] {
-    background-color: #e9e9e9;
-    border-color: #e9e9e9;
-    color: #dbdbdb;
+    background-color: $color-disabled;
+    border-color: $color-disabled;
+    color: $color-disabled-text;
     cursor: default;
 }
 
@@ -98,11 +100,11 @@ h1 {
 }
 
 #registrationOk {
-    color: #008000;
+    color: $color-success;
 }
 
 #failedLogin, #alreadyExists {
-    color: #FF0000;
+    color: $color-error;
 }
 
 #failedLogin, #alreadyExists, #registrationOk {
