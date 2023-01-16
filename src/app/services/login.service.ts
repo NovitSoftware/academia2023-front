@@ -14,12 +14,12 @@ export class LoginService {
 
   constructor(private router: Router) { }
 
-  userExists(newAccount: any){
+  userExists(newAccount: LoginCredentials){
     const found =  _.findIndex(this.registeredUsers, x => x.username === newAccount.username);
     return found >= 0;
   }
 
-  addUser(newAccount: any){
+  addUser(newAccount: LoginCredentials){
     this.registeredUsers.push(newAccount);
   }
 
@@ -28,7 +28,7 @@ export class LoginService {
     else this.router.navigateByUrl("/login")
   }
 
-  login(credentials: any): boolean{
+  login(credentials: LoginCredentials): boolean{
     const found = _.findIndex(this.registeredUsers, x => x.username === credentials.username && x.password === credentials.password);
     if (found >= 0) {
       localStorage.setItem('login', 'ok');
