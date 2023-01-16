@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
+import { LoginCredentials } from '../models/login-credentials';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class LoginService {
 
   // Guardar datos - ATENCIÓN: no persisten
   // esto es, si se reinicia la app, se pierde todo
-  registeredUsers: {username: string, password: string}[] = [];
+  registeredUsers: LoginCredentials[] = [];
 
   constructor(private router: Router) { }
 

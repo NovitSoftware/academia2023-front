@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
+import { LoginCredentials } from 'src/app/models/login-credentials';
 import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-login',
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
   registerAccount(){
     this.usernameAlreadyExists = this.registrationOk = false;
 
-    const newAccount = {
+    const newAccount: LoginCredentials = {
       username: this.loginForm.get('username')!.value.toLowerCase(), 
       password: this.loginForm.get('password')!.value
     };
@@ -56,7 +57,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.failedLogin = false;
 
-    const credentials = {
+    const credentials: LoginCredentials = {
       username: this.loginForm.get('username')!.value.toLowerCase(), 
       password: this.loginForm.get('password')!.value
     };
