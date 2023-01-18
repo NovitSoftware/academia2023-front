@@ -34,6 +34,14 @@
                 <label for="password">Contraseña</label>
                 <input id="password" type="password" formControlName="password">
             </div>
+            <div class="inputContainer select">
+                <label for="role">Rol</label>
+                <select id="role" type="password" formControlName="role">
+                    <option value="Vendedor">Vendedor</option>
+                    <option value="Comercial">Comercial</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </div>
             <div class="notificationsContainer">
                 <span *ngIf="usernameAlreadyExists" id="alreadyExists">El usuario ya existe</span>
                 <span *ngIf="registrationOk" id="registrationOk">Usuario creado correctamente</span>

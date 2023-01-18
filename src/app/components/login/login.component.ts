@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
     username: new FormControl<string>('', {nonNullable: true, validators: Validators.required}),
     password: new FormControl<string>('',  {nonNullable: true, validators: Validators.required}),
+    role: new FormControl<string>('', {nonNullable: true})
   });
 
   constructor(
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   createAccount(){
-    this.loginForm.setValue({username: "", password: ""});
+    this.loginForm.setValue({username: "", password: "", role: ""});
     this.notRegistered = !this.notRegistered;
     this.registrationOk = this.usernameAlreadyExists = this.failedLogin = false;
   }
@@ -43,7 +44,8 @@ export class LoginComponent implements OnInit {
 
     const newAccount: LoginCredentials = {
       username: this.loginForm.get('username')!.value.toLowerCase(), 
-      password: this.loginForm.get('password')!.value
+      password: this.loginForm.get('password')!.value,
+      role: this.loginForm.get('role')!.value
     };
 
     const userExists = this._loginService.userExists(newAccount);
@@ -59,7 +61,8 @@ export class LoginComponent implements OnInit {
 
     const credentials: LoginCredentials = {
       username: this.loginForm.get('username')!.value.toLowerCase(), 
-      password: this.loginForm.get('password')!.value
+      password: this.loginForm.get('password')!.value,
+      role: this.loginForm.get('role')!.value
     };
 
     const loginOk = this._loginService.login(credentials);

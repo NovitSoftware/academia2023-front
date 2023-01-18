@@ -86,8 +86,14 @@ h1 {
     flex-direction: column;
     
     > label {
+        margin-bottom: 5px;
         font-size: 11px;
     }
+}
+
+.select {
+    margin-top: 10px;
+    width: 55%;
 }
 
 
